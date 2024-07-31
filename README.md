@@ -35,42 +35,67 @@ Utilizado o typeorm para criar as tabelas do banco, utilizando migrations.
 Obs.: SO utilizado - linux Ubuntu (última versão disponível)
 
 1. Instalar o NVM
+
 $ cd /tmp
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 2. Testar a instalação do NVM (abrir uma guia nova)
+
 $ command -v nvm
 retorno no terminal → :  nvm
 
+
 3. Instalar Node e usar a versao 18.10.0
+
 $ nvm install --lts
+
 $ nvm install 18.10.0
+
 $ nvm alias default 18.10.0
+
 $ nvm use 18.10.0
 
+
 4. Instalar Yarn
+
 $ cd /tmp
+
 $ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+
 $ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
 $ sudo apt update
+
 $ sudo apt install yarn
 
+
 5. Baixar docker 
+
 $ sudo apt-get update
+
 $ sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common libssl-dev libffi-dev git wget nano
 
+
 6. Add user group
+
 $ sudo groupadd docker
+
 $ sudo usermod -aG docker ${USER}
 Obs.: usar ${USER}, não alterar pelo seu usuário
 
+
 7. Add docker key and repo
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
 $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
 $ sudo apt-get update
 
+
 8. Install docker and docker-compose
+
 $ sudo apt-get install -y docker-ce [containerd.io](http://containerd.io/) docker-compose
+
 
 9. ATENÇÃO SOMENTE SE APARECER O ERRO A SEGUIR 
 `error getting credentials - err: exit status 1, out: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.secrets was not provided by any .service files`
