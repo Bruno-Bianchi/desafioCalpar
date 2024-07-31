@@ -1,6 +1,7 @@
 import { injectable, inject } from "tsyringe";
 import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepository";
 import { hash } from "bcrypt";
+import { AppError } from "@shared/errors/AppError";
 
 interface IRequest {
   email: string
@@ -16,6 +17,10 @@ class ResetPasswordUserUseCase {
 
   async execute({ senha, email }: IRequest): Promise<void> {
     const user = await this.usuarioRepository.findByEmail(email);
+
+    if(!user) {
+      throw new AppError("Usuário não encontrado", 404);
+    }
     
     user.senha = await hash(senha, 8);
 

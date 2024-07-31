@@ -1,3 +1,290 @@
 {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Desafio Calpar",
+      "version": "1.0.0",
+      "description": "Projeto Backend",
+      "contact": {
+        "email": "brunobianchi_dev@outlook.com"
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    },
+    "security": [
+      { "bearerAuth": [] }
+    ],
+    "paths": {
+      "/cliente": {
+        "post": {
+          "tags": ["Cliente"],
+          "summary": "Criar cliente",
+          "description": "Criar cliente",
+          "security": [
+            { "bearerAuth": [] }
+          ],
+          "responses": {
+            "200": {
+              "description": "Cliente criado com sucesso!"
+            },
+            "500": {
+              "description": "Cliente(s) já cadastrado(s)!"
+            }
+          }
+        }
+      },
+      "/cliente/list": {
+        "post": {
+          "tags": ["Cliente"],
+          "summary": "Listar todos os clientes",
+          "description": "Listar todos os clientes",
+          "security": [
+            { "bearerAuth": [] }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "search": {
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "type": "number"
+                    },
+                    "page": {
+                      "type": "number"
+                    },
+                    "order": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "search": "",
+                    "pageSize": 10,
+                    "page": 1,
+                    "order": ["ASC", "ASC"]
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sucesso!"
+            },
+            "400": {
+              "description": "Não há clientes cadastrados!"
+            }
+          }
+        }
+      },
+      "/cliente/{id_cliente}": {
+        "put": {
+          "tags": ["Cliente"],
+          "summary": "Atualizar cliente",
+          "description": "Atualizar cliente",
+          "security": [
+            { "bearerAuth": [] }
+          ],
+          "parameters": [
+            {
+              "name": "id_cliente",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "Id do cliente a ser atualizado."
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nome": {
+                      "type": "string"
+                    },
+                    "disponivel": {
+                      "type": "boolean"
+                    }
+                  },
+                  "example": {
+                    "nome": "Ana",
+                    "disponivel": true
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Cliente Atualizado com sucesso!"
+            },
+            "500": {
+              "description": "Cliente não identificado!"
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Cliente"],
+          "summary": "Excluir cliente",
+          "description": "Excluir cliente",
+          "security": [
+            { "bearerAuth": [] }
+          ],
+          "parameters": [
+            {
+              "name": "id_cliente",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              },
+              "description": "Id do cliente a ser excluído."
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Excluído com sucesso!"
+            },
+            "404": {
+              "description": "Cliente não identificado!"
+            }
+          }
+        }
+      },
+      "/usuario": {
+        "post": {
+          "tags": ["Usuário"],
+          "summary": "Criar usuário",
+          "description": "Criar usuário",
+          "security": [
+            { "bearerAuth": [] }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nome": {
+                      "type": "string"
+                    },
+                    "isAdmin": {
+                      "type": "boolean"
+                    },
+                    "senha": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "nome": "Teste",
+                    "isAdmin": false,
+                    "senha": "123456",
+                    "email": "teste@gmail.com"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Criado com sucesso!"
+            },
+            "500": {
+              "description": "Usuário já cadastrado!"
+            }
+          }
+        }
+      },
+      "/sessions": {
+        "post": {
+          "tags": ["Usuário"],
+          "summary": "Autenticar usuário",
+          "description": "Autenticação do usuário",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "senha": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "email": "desafiocalpar@gmail.com",
+                    "senha": "desafio"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Sucesso"
+            },
+            "400": {
+              "description": "Email ou senha incorretos!"
+            }
+          }
+        }
+      },
+      "/password/reset": {
+        "post": {
+          "tags": ["Password"],
+          "summary": "Alterar senha do usuário",
+          "description": "Alterar senha do usuário",
+          "security": [
+            { "bearerAuth": [] }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {        
+                    "email": {
+                      "type": "string"
+                    },
+                    "senha": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "email": "teste@gmail.com",
+                    "senha": "123"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Senha alterada com sucesso!"
+            },
+            "404": {
+              "description": "Usuário não encontrado!"
+            }
+          }
+        }
+      }
+    }
+  }
   
-}

@@ -24,15 +24,6 @@ class ListClienteUseCase {
         private clienteRepository: IClienteRepository
     ) {}
 
-    // async execute(): Promise<Cliente[]> {
-    //     const clientes = await this.clienteRepository.list();
-
-    //     if(clientes.length === 0) {
-    //         throw new AppError("Não há clientes cadastrados!")
-    //     }
-    //     return clientes
-    // }  
-
     async execute({
         search = '',
         page = 0,
@@ -54,6 +45,10 @@ class ListClienteUseCase {
           search,
           filter
         )
+
+        if(countClientes === 0) {
+          throw new AppError("Não há clientes cadastrados!", 400);
+        }
     
         const numeroCliente = page * rowsPerPage
     

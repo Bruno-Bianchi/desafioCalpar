@@ -30,6 +30,9 @@ Para isso, foi utilizado o framework express para gerenciamento dos endpoints e 
 5. Banco de Dados (PostgreSQL) 
 Utilizado o typeorm para criar as tabelas do banco, utilizando migrations.
 
+6. Documentação - Swagger
+http://localhost:3000/api-docs/#/
+
 --------------------------------------------------------------------------------------------------------------------------------
 # Instalar softwares necessários (via terminal) 
 Obs.: SO utilizado - linux Ubuntu (última versão disponível)
@@ -112,7 +115,8 @@ $ source ~/.profile
 
 $ chown <user_name> <file_name>
 
-### PSQL
+** PSQL **
+
 $ sudo apt-get install postgresql-client
 
 
