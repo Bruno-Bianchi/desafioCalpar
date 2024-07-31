@@ -1,6 +1,6 @@
 # Desafio Calpar
 
-** API Consumida **
+1. API Consumida 
 Os dados da API consumida são armazenados na tebela "cliente"
 A tebala cliente possui como colunas:
 {
@@ -11,23 +11,23 @@ A tebala cliente possui como colunas:
     created_at: data de criação do registro
 }
 
-** Usuário Administrador - Autorização **
+2. Usuário Administrador - Autorização 
 Somente este usuário pode realizar as atividades de: Criar, atualizar e deletar um cliente
 
-Obs.:As demais atividade como, por exemplo, listar os clietes, poderão ser realizadas por quaisquer usuários do sistema
+Obs.:As demais atividades como, por exemplo, listar os clientes, poderão ser realizadas por quaisquer usuários do sistema
 
-** Criação de usuário do sistema **
+3. Criação de usuário do sistema 
 Rota para criar usuário que fará o login no sistema
 Autenticação com token
 
-** CRUD Cliente **
+4. CRUD Cliente 
 Rotas para criar, atualizar, ler/listar e deletar 
 
 A requisição é atendida pela rota, posteriormente para para o Controller especificado na rota. Em seguida, o Controller verifica os dados que estão sendo passados pelo body e/o params e envia estes para o UseCase. O UseCase instancia o Repositório e dentro do Repositório são realizadas as operações de CRUD.
 
 Para isso, foi utilizado o framework express para gerenciamento dos endpoints e utilizado o ORM Typeorm para interação com o banco de dados
 
-** Banco de Dados (PostgreSQL) ** 
+5. Banco de Dados (PostgreSQL) 
 Utilizado o typeorm para criar as tabelas do banco, utilizando migrations.
 
 --------------------------------------------------------------------------------------------------------------------------------
@@ -59,30 +59,29 @@ $ sudo apt install yarn
 $ sudo apt-get update
 $ sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common libssl-dev libffi-dev git wget nano
 
-#Add user group
+6. Add user group
 $ sudo groupadd docker
 $ sudo usermod -aG docker ${USER}
-
 Obs.: usar ${USER}, não alterar pelo seu usuário
 
-#Add docker key and repo
+7. Add docker key and repo
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 $ sudo apt-get update
 
-#Install docker and docker-compose
+8. Install docker and docker-compose
 $ sudo apt-get install -y docker-ce [containerd.io](http://containerd.io/) docker-compose
 
-#======= ATENÇÃO SOMENTE SE APARECER O ERRO A SEGUIR =======#
+9. ATENÇÃO SOMENTE SE APARECER O ERRO A SEGUIR 
 `error getting credentials - err: exit status 1, out: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.secrets was not provided by any .service files`
 digite o comando abaixo: 
 $ sudo apt install gnupg2 pass
 
-6. Deixa o ~/ como caminho padrao ao abrir o wsl 
+10. Deixa o ~/ como caminho padrao ao abrir o wsl 
 $ echo "cd /" >> ~/.profile
 $ source ~/.profile
 
-7. Permissao pasta opt
+11. Permissao pasta opt
 $ chown <user_name> <file_name>
 
 ### PSQL
