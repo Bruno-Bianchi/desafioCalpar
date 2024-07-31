@@ -75,13 +75,16 @@ $ sudo apt-get install -y docker-ce [containerd.io](http://containerd.io/) docke
 9. ATENÇÃO SOMENTE SE APARECER O ERRO A SEGUIR 
 `error getting credentials - err: exit status 1, out: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.secrets was not provided by any .service files`
 digite o comando abaixo: 
+
 $ sudo apt install gnupg2 pass
 
 10. Deixa o ~/ como caminho padrao ao abrir o wsl 
+
 $ echo "cd /" >> ~/.profile
 $ source ~/.profile
 
 11. Permissao pasta opt
+
 $ chown <user_name> <file_name>
 
 ### PSQL
