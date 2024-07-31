@@ -8,6 +8,9 @@ import { UsuarioRepository } from "@modules/accounts/infra/typeorm/repositories/
 import { IUsuarioTokenRepository } from "@modules/accounts/repositories/IUsuarioTokenRepository";
 import { UsuarioTokenRepository } from "@modules/accounts/infra/typeorm/repositories/UsuarioTokenRepository";
 
+import { IClienteRepository } from "@modules/Menu/repositories/IClienteRepository";
+import { ClienteRepository } from "@modules/Menu/infra/typeorm/repositories/ClienteRepository";
+
 container.registerSingleton<IUsuarioRepository>(
   "UsuarioRepository",
   UsuarioRepository
@@ -18,5 +21,7 @@ container.registerSingleton<IUsuarioTokenRepository>(
   UsuarioTokenRepository
 );
 
-
-
+container.registerSingleton<IClienteRepository>(
+  "ClienteRepository",
+  ClienteRepository
+);
